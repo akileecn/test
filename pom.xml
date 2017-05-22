@@ -4,11 +4,19 @@
 	<groupId>cn.aki.demo</groupId>
 	<artifactId>test</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.3.RELEASE</version>
+	</parent>
 	<properties>
-		<spring.verson>4.2.5.RELEASE</spring.verson>
-		<mybatis.verson>3.3.1</mybatis.verson>
-		<mybatis-spring.verson>1.2.4</mybatis-spring.verson>
-		<mysql.verson>5.1.38</mysql.verson>
+		<!-- jar包版本 -->
+		<mybatis.version>3.3.1</mybatis.version>
+		<mybatis-spring.version>1.2.4</mybatis-spring.version>
+		<mysql.version>5.1.38</mysql.version>
+
+		<!-- 其他 -->
+		<spring.boot.main.class>cn.aki.demo.Application</spring.boot.main.class>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -16,25 +24,27 @@
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 		</dependency>
+		<!-- 父项目中已经定义了spring的版本 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>${spring.verson}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>${spring.verson}</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-jdbc</artifactId>
-		    <version>${spring.verson}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql.verson}</version>
+			<version>${mysql.version}</version>
 		</dependency>
 		<!-- jdbc数据源 -->
 		<dependency>
@@ -46,13 +56,13 @@
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
-			<version>${mybatis.verson}</version>
+			<version>${mybatis.version}</version>
 		</dependency>
 		<!-- mybatis spring插件 -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
-			<version>${mybatis-spring.verson}</version>
+			<version>${mybatis-spring.version}</version>
 		</dependency>
 		<!-- 日志log4j转slf4j(依赖slf4j-api和log4j) -->
 		<dependency>
@@ -61,4 +71,19 @@
 			<version>1.7.21</version>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- spring boot 打独立jar包的插件 -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<!-- jar包中存在多个main方法时需要指定，不然会报错 -->
+					<mainClass>${spring.boot.main.class}</mainClass>
+					<layout>JAR</layout>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

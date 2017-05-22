@@ -12,7 +12,6 @@ import cn.aki.demo.dao.TestObjectMapper;
 import cn.aki.demo.entity.TestObject;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-//@WebAppConfiguration
 @ContextConfiguration({"/spring/spring.xml"})
 public class SpringTest {
 	
