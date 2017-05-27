@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Created by Administrator on 2017/5/22.
  */
 @Controller
-@RequestMapping("/boot")
+@RequestMapping("/")
 public class SpringBootController {
 
 	@ResponseBody

@@ -4,6 +4,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
+import cn.aki.demo.lombok.LombokBean;
 import org.apache.ibatis.jdbc.SQL;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.SystemMetaObject;
@@ -60,5 +61,13 @@ public class SimpleTest {
 		MetaObject metaObject = SystemMetaObject.forObject(obj);
 		System.err.println(metaObject.getValue("text"));
 	}
-	
+
+	@Test
+	public void lombokTest(){
+		LombokBean bean = new LombokBean();
+		bean.setText("ddd");
+		System.err.println(bean.getText());
+
+	}
+
 }
