@@ -70,4 +70,9 @@ public class SimpleTest {
 
 	}
 
+	@Test
+	public void logTest(){
+		log.debug("{}{}{}", "a", "b");
+	}
+
 }
