@@ -1,9 +1,6 @@
 package cn.aki.demo.test;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Semaphore;
-
+import cn.aki.demo.entity.TestObject;
 import cn.aki.demo.lombok.LombokBean;
 import org.apache.ibatis.jdbc.SQL;
 import org.apache.ibatis.reflection.MetaObject;
@@ -12,7 +9,9 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import cn.aki.demo.entity.TestObject;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Semaphore;
 
 public class SimpleTest {
 	private static final Logger log = LoggerFactory.getLogger(SimpleTest.class);
