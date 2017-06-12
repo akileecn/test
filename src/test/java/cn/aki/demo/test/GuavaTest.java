@@ -1,5 +1,6 @@
 package cn.aki.demo.test;
 
+import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import com.google.common.reflect.TypeToken;
 import org.junit.Test;
@@ -54,5 +55,10 @@ public class GuavaTest {
 		log.debug("isSupertypeOf:{}", typeToken.isSupertypeOf(ArrayList.class)); // false
 		log.debug("rawType isSupertypeOf:{}", TypeToken.of(rawType).isSupertypeOf(ArrayList.class)); // true
 
+	}
+
+	@Test
+	public void joinerTest(){
+		System.err.println(Joiner.on(",").join(Lists.newArrayList(1,2,3,4)));
 	}
 }

@@ -9,12 +9,17 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
 public class SimpleTest {
 	private static final Logger log = LoggerFactory.getLogger(SimpleTest.class);
+
+	public static void main(String[] args) {
+		System.err.println(new Date().getTime());
+	}
 	
 	@Test
 	public void semaphoreTest(){
