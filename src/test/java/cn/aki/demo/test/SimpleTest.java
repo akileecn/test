@@ -2,6 +2,8 @@ package cn.aki.demo.test;
 
 import cn.aki.demo.entity.TestObject;
 import cn.aki.demo.lombok.LombokBean;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.ibatis.jdbc.SQL;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.SystemMetaObject;
@@ -9,6 +11,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -18,7 +21,10 @@ public class SimpleTest {
 	private static final Logger log = LoggerFactory.getLogger(SimpleTest.class);
 
 	public static void main(String[] args) {
-		System.err.println(new Date().getTime());
+		String attach = "WantedId123456";
+		if(attach.startsWith("WantedId")){
+			System.err.println(attach.substring(8));
+		}
 	}
 	
 	@Test
@@ -77,6 +83,21 @@ public class SimpleTest {
 	@Test
 	public void logTest(){
 		log.debug("{}{}{}", "a", "b");
+	}
+
+	@Test
+	public void jsonTest(){
+		JSONObject json = JSON.parseObject("{'a':'a'}");
+		System.err.println(json.getString("a"));
+		System.err.println(json.getString("b"));
+	}
+
+	@Test
+	public void dateTest(){
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(new Date());
+		cal.set(Calendar.HOUR_OF_DAY, 11);
+		System.err.println(cal.getTimeInMillis());
 	}
 
 }

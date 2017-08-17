@@ -24,12 +24,20 @@ public class SpringTest {
 	@Autowired
 	private TestObjectMapper testObjectMapper;
 
+	@Value("${jdbc.url_:${jdbc.username_:hello}}")
+	private String value;
+
 	private static final Logger log = LoggerFactory.getLogger(SpringTest.class);
 
 	@Test
 	public void dateBaseTest(){
 		TestObject obj = testObjectMapper.selectByPrimaryKey(1L);
 		log.info(obj.getText());
+	}
+
+	@Test
+	public void valueTest(){
+		System.err.println(value);
 	}
 
 }
