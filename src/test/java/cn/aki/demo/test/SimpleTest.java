@@ -11,7 +11,10 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Calendar;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -22,16 +25,16 @@ public class SimpleTest {
 
 	public static void main(String[] args) {
 		String attach = "WantedId123456";
-		if(attach.startsWith("WantedId")){
+		if (attach.startsWith("WantedId")) {
 			System.err.println(attach.substring(8));
 		}
 	}
-	
+
 	@Test
-	public void semaphoreTest(){
+	public void semaphoreTest() {
 		ExecutorService executor = Executors.newFixedThreadPool(30);
 		final Semaphore semaphore = new Semaphore(10);
-		for(int i = 0; i < 100; i++){
+		for (int i = 0; i < 100; i++) {
 			executor.execute(new Runnable() {
 				public void run() {
 					try {
@@ -46,13 +49,13 @@ public class SimpleTest {
 		}
 		executor.shutdown();
 	}
-	
+
 	@Test
-	public void sqlTest(){
+	public void sqlTest() {
 		SQL sql = new SQL().SELECT("val1, val2").FROM("table").WHERE("id=?");
 		log.debug("sql:{}", sql.toString());
-		
-		SQL sql2 = new SQL(){
+
+		SQL sql2 = new SQL() {
 			// 构造代码块
 			{
 				SELECT("val1, val2");
@@ -62,9 +65,9 @@ public class SimpleTest {
 		};
 		log.debug("sql2:{}", sql2.toString());
 	}
-	
+
 	@Test
-	public void metaObjectTest(){
+	public void metaObjectTest() {
 		TestObject obj = new TestObject();
 		obj.setText("222");
 		// mybatis提供的工具类
@@ -73,7 +76,7 @@ public class SimpleTest {
 	}
 
 	@Test
-	public void lombokTest(){
+	public void lombokTest() {
 		LombokBean bean = new LombokBean();
 		bean.setText("ddd");
 		System.err.println(bean.getText());
@@ -81,23 +84,29 @@ public class SimpleTest {
 	}
 
 	@Test
-	public void logTest(){
+	public void logTest() {
 		log.debug("{}{}{}", "a", "b");
 	}
 
 	@Test
-	public void jsonTest(){
+	public void jsonTest() {
 		JSONObject json = JSON.parseObject("{'a':'a'}");
 		System.err.println(json.getString("a"));
 		System.err.println(json.getString("b"));
 	}
 
 	@Test
-	public void dateTest(){
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(new Date());
-		cal.set(Calendar.HOUR_OF_DAY, 11);
-		System.err.println(cal.getTimeInMillis());
+	public void dateTest() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		LocalDateTime now = LocalDateTime.now();
+//		System.err.println(now.format(formatter));
+//		System.err.println(formatter.format(now));
+
+		// LocalDateTime -> Instant -> Date
+		Date date = Date.from(now.toInstant(ZoneOffset.UTC));
+		// Date -> Instant -> LocalDateTime
+		LocalDateTime localDateTime = LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
+		System.err.println(formatter.format(localDateTime));
 	}
 
 }
