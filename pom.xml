@@ -74,17 +74,20 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.7.21</version>
 		</dependency>
+		<!-- lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.16.16</version>
             <scope>provided</scope>
         </dependency>
+		<!-- guava -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>22.0</version>
 		</dependency>
+		<!-- rxjava -->
 		<dependency>
 			<groupId>io.reactivex.rxjava2</groupId>
 			<artifactId>rxjava</artifactId>
@@ -96,7 +99,7 @@
 			<artifactId>fastjson</artifactId>
 			<version>1.2.12</version>
 		</dependency>
-		<!-- 全文检索 -->
+		<!-- 全文检索lucene -->
 		<dependency>
 			<groupId>org.apache.lucene</groupId>
 			<artifactId>lucene-core</artifactId>
@@ -112,16 +115,32 @@
 			<artifactId>lucene-analyzers-smartcn</artifactId>
 			<version>6.6.0</version>
 		</dependency>
-		<!-- IK-Analyzer兼容6.6.0 -->
+		<!-- 分词器IK-Analyzer兼容6.6.0 -->
 		<dependency>
 			<groupId>cn.aki.fork</groupId>
 			<artifactId>IK-Analyzer-2012FF</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
+		<!-- url重写 -->
+		<dependency>
+			<groupId>org.tuckey</groupId>
+			<artifactId>urlrewritefilter</artifactId>
+			<version>4.0.3</version>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
+			<!-- 跳过测试 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.18.1</version>
+				<configuration>
+					<skipTests>true</skipTests>
+				</configuration>
+			</plugin>
+
 			<!-- spring boot 打独立jar包的插件 -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -132,6 +151,7 @@
 					<layout>JAR</layout>
 				</configuration>
 			</plugin>
+
 		</plugins>
 	</build>
 </project>

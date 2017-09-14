@@ -10,6 +10,7 @@ import org.apache.ibatis.reflection.SystemMetaObject;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringBootVersion;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -109,4 +110,9 @@ public class SimpleTest {
 		System.err.println(formatter.format(localDateTime));
 	}
 
+	@Test
+	public void versionTest() {
+		// 从META-INF/MANIFEST.MF文件中获取，maven打包时可以自动生成
+		System.err.println(SpringBootVersion.getVersion());
+	}
 }
