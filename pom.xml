@@ -62,6 +62,18 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql.version}</version>
 		</dependency>
+		<!--基础mapper-->
+		<dependency>
+			<groupId>tk.mybatis</groupId>
+			<artifactId>mapper-spring-boot-starter</artifactId>
+			<version>1.1.3</version>
+		</dependency>
+		<!--分页-->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>1.1.3</version>
+		</dependency>
 		<!-- jdbc数据源 -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
@@ -137,6 +149,12 @@
 			<groupId>com.btmatthews.springboot</groupId>
 			<artifactId>memcached-spring-boot-starter</artifactId>
 			<version>1.1.0</version>
+		</dependency>
+		<!-- mybatis整合memcached -->
+		<dependency>
+			<groupId>org.mybatis.caches</groupId>
+			<artifactId>mybatis-memcached</artifactId>
+			<version>1.0.0</version>
 		</dependency>
 	</dependencies>
 

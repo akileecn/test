@@ -36,7 +36,7 @@ public class DynamicProxy implements InvocationHandler{
 	
 	public static void main(String[] args) {
 		TestObject obj = new TestObject();
-		obj.setText("123");
+		obj.setTextValue("123");
 		IText proxy = (IText)DynamicProxy.wrap(obj, new HelloInterceptor());
 		String str = proxy.getText();
 		System.err.println(str);

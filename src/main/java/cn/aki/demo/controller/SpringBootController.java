@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/")
+//@CrossOrigin // spring自带的允许跨域请求
 public class SpringBootController {
 
 	@RequestMapping("/hello")

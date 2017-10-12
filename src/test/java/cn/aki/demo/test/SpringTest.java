@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
+import java.util.List;
+
 public class SpringTest extends AbstractSpringTest {
 
 	@Autowired
@@ -22,6 +24,20 @@ public class SpringTest extends AbstractSpringTest {
 	public void dateBaseTest() {
 		TestObject obj = testObjectMapper.selectByPrimaryKey(1L);
 		log.info(obj.getText());
+	}
+
+	@Test
+	public void updateTest(){
+		TestObject obj = new TestObject();
+		obj.setId(1L);
+		obj.setTextValue("xxxx");
+		testObjectMapper.updateByPrimaryKeySelective(obj);
+	}
+
+	@Test
+	public void listTest(){
+		List<TestObject> list = testObjectMapper.list();
+		System.err.println(list);
 	}
 
 	@Test

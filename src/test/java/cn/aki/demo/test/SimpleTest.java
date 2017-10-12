@@ -70,7 +70,7 @@ public class SimpleTest {
 	@Test
 	public void metaObjectTest() {
 		TestObject obj = new TestObject();
-		obj.setText("222");
+		obj.setTextValue("222");
 		// mybatis提供的工具类
 		MetaObject metaObject = SystemMetaObject.forObject(obj);
 		System.err.println(metaObject.getValue("text"));
