@@ -19,6 +19,7 @@ public class DynamicProxy implements InvocationHandler{
 		this.interceptor = interceptor;
 	}
 	
+	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 		log.debug("invoke method:{}", method);
 		Invocation invocation = new Invocation(method, args, target);

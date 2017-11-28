@@ -26,6 +26,7 @@ import org.slf4j.LoggerFactory;
 public class MybatisInterceptor implements Interceptor {
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
+	@Override
 	public Object intercept(Invocation invocation) throws Throwable {
 		log.debug("intercept,target<{}>,method<{}>", invocation.getTarget().toString(), invocation.getMethod());
 		final int limit = 100;
@@ -40,12 +41,14 @@ public class MybatisInterceptor implements Interceptor {
 		return invocation.proceed();
 	}
 
+	@Override
 	public Object plugin(Object target) {
 		log.debug("plugin,target:{}", target.toString());
 		// 返回代理类才会调用
 		return Plugin.wrap(target, this);
 	}
 
+	@Override
 	public void setProperties(Properties properties) {
 		log.debug("setProperties");
 	}

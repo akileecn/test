@@ -19,6 +19,7 @@ public class MySqlSource implements SqlSource{
 		this.sqlSource = sqlSource;
 		this.configuration = configuration;
 	}
+	@Override
 	public BoundSql getBoundSql(Object parameterObject) {
 		BoundSql rawBoundSql = sqlSource.getBoundSql(parameterObject);
 		MetaObject metaObject = SystemMetaObject.forObject(rawBoundSql);

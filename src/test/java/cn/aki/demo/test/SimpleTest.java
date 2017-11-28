@@ -25,10 +25,7 @@ public class SimpleTest {
 	private static final Logger log = LoggerFactory.getLogger(SimpleTest.class);
 
 	public static void main(String[] args) {
-		String attach = "WantedId123456";
-		if (attach.startsWith("WantedId")) {
-			System.err.println(attach.substring(8));
-		}
+		System.err.println(Integer.parseInt("02"));
 	}
 
 	@Test

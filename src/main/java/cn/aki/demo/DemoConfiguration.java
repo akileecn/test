@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @MapperScan("cn.aki.demo.dao")
-@EnableMemcached // 与mybatis插件不同
+//@EnableMemcached // 与mybatis插件不同
 public class DemoConfiguration {
 
 	//	@Bean
